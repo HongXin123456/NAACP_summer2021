@@ -95,12 +95,12 @@ def extract_quotes_from_json(file_path, quotes_dict):
 
 def extract_and_attribute_quotes():
     """
-        iterate through every folder in the extracted_quotes directory and 
+        iterate through every folder in the extracted_details directory and 
         extract and attribute their quotes to thei respective authors 
     """
-    extracted_quotes_path = 'data/processed/extracted_quotes'
-    for folder in os.listdir(extracted_quotes_path):
-        folder_path = f"{extracted_quotes_path}/{folder}"
+    extracted_details_path = 'data/processed/extracted_details'
+    for folder in os.listdir(extracted_details_path):
+        folder_path = f"{extracted_details_path}/{folder}"
         all_quotes  = defaultdict(list)
         if os.path.isdir(folder_path):
             for file_name in os.listdir(folder_path):
@@ -110,7 +110,7 @@ def extract_and_attribute_quotes():
 
         df = pd.DataFrame.from_dict(all_quotes, orient='index')
         print(df.head(20))
-        df.to_csv(f'data/processed/grouped_quotes/bostonglobe-{folder}.csv')
+        df.to_csv(f'data/processed/extracted_quotes/bostonglobe-{folder}.csv')
 
 
 
